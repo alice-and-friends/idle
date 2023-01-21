@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StorageService} from "../storage.service";
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +7,19 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  title = 'Tab2';
+  data: any;
 
-  constructor() {}
+  constructor(private storage: StorageService) {
+    this.loadData();
+  }
+
+  async loadData() {
+    this.data = await this.storage.getData();
+  }
+
+  async addPhotoToGallery() {
+    await this.storage.set('name', 'Alice');
+  }
 
 }
