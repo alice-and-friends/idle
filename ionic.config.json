@@ -1,0 +1,7 @@
+{
+  "name": "idle",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
