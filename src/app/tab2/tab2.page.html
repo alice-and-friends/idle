@@ -1,15 +1,25 @@
+<style>
+  ion-toolbar {
+    --border-color: #28ba62;
+    --border-width: 0 0 4px 0;
+    --border-style: double;
+    --padding: 0;
+  }
+  ion-chip {
+    --background: transparent;
+  }
+</style>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>{{title}}</ion-title>
+    <ion-chip>
+      <ion-icon name="prism" color="success"></ion-icon>
+      <ion-label>{{data?.resource.gold.balance}} (+{{data?.resource.gold.perSecond}}/s)</ion-label>
+    </ion-chip>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{title}}</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
   <ion-text>
     <h3>Name: {{data?.name}}</h3>

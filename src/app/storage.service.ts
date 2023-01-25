@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
 import * as CordovaSQLiteDriver from 'localforage-cordovasqlitedriver';
-import {GameData} from "./game-data";
+import { GameData } from "./game-data";
 
 const STORAGE_KEY = 'idle'
 

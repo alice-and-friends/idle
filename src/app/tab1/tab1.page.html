@@ -1,3 +1,9 @@
+<style>
+  .start-zero ion-item {
+    --padding-start: 0;
+  }
+</style>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
@@ -7,11 +13,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{data.player.name}}</ion-card-title>
+      <ion-card-subtitle *ngIf="data.player.class">Level {{data.player.level}} {{data.player.class}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Here's a small text description for the card content. Nothing more, nothing less.</p>
+
+      <ion-list class="start-zero">
+        <ion-item>
+          <ion-label>
+            <p>Class</p>
+            <h2>{{data.player.class}}</h2>
+          </ion-label>
+          <ion-button id="open-modal" expand="block" size="small" slot="end">Change class</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-modal #modal trigger="open-modal" [presentingElement]="presentingElement">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Choose a class</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="modal.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-item button *ngFor="let class of classes;" (click)='selectClass(class)'>
+            <ion-icon name="{{class.icon}}" color="primary" slot="start"></ion-icon>
+            <ion-label>
+              <h2>{{class.label}}</h2>
+              <p>{{class.description}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 </ion-content>
