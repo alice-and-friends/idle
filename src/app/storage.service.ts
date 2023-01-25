@@ -19,10 +19,17 @@ export class StorageService {
     const storage = await this.storage.create();
     await storage.defineDriver(CordovaSQLiteDriver)
     this._storage = storage;
-    this.data = await this._storage.get(STORAGE_KEY);
-    if(this.data === null) {
+    const dataFromStorage = await this._storage.get(STORAGE_KEY);
+    if(dataFromStorage === null) {
+      // Start from scratch
       this.data = new GameData();
     }
+    else {
+      // Migrate
+      this.data = Object.assign(new GameData(), dataFromStorage);
+    }
+    // Commit
+    this._storage?.set(STORAGE_KEY, this.data);
   }
 
   // Create and expose methods that users of this service can

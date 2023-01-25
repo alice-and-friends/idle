@@ -8,6 +8,9 @@ export class GameData {
     gold: {
       balance: 0,
       perSecond: 1
+    },
+    gems: {
+      balance: 0
     }
   }
   resourcesLastUpdated: Date | undefined
