@@ -16,8 +16,8 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>{{data.player.name}}</ion-card-title>
-      <ion-card-subtitle *ngIf="data.player.class">Level {{data.player.level}} {{data.player.class}}</ion-card-subtitle>
+      <ion-card-title>{{data?.player.name}}</ion-card-title>
+      <ion-card-subtitle *ngIf="data?.player.class">Level {{data.player.level}} {{data.player.class}}</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
@@ -27,7 +27,7 @@
         <ion-item>
           <ion-label>
             <p>Class</p>
-            <h2>{{data.player.class}}</h2>
+            <h2>{{data?.player.class}}</h2>
           </ion-label>
           <ion-button id="open-modal" expand="block" size="small" slot="end">Change class</ion-button>
         </ion-item>
