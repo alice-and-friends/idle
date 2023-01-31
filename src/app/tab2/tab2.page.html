@@ -10,7 +10,7 @@
   }
 </style>
 
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-chip>
       <ion-icon name="prism" color="success"></ion-icon>
@@ -24,6 +24,45 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-card class="ship-status">
+    <ion-card-header>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>Here's a small text description for the card content. Nothing more, nothing less.</p>
+      <ion-progress-bar [value]="0.4"></ion-progress-bar>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab slot="fixed" vertical="center" horizontal="start" class="flight-toolbar">
+    <ion-fab-button size="small">
+      <ion-icon name="layers-sharp"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button id="open-daily-rewards" size="small">
+      <ion-icon name="layers-sharp"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-modal #dailyRewards trigger="open-daily-rewards" [presentingElement]="presentingElement">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Daily</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="dailyRewards.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        Next: {{timeUntilDailyRewardAvailable()}}
+        <ion-button *ngIf="dailyRewardAvailable()" (click)="collectDailyReward()">Collect</ion-button>
+        Streak: {{data?.dailyReward.streak}}
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
   <div class="rocket-container">
     <div id="js-rocket">
       <svg class="rocket-svg" viewBox="0 0 477 445" version="1.1" xmlns="http://www.w3.org/2000/svg"

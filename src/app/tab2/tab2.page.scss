@@ -1,8 +1,23 @@
+.ship-status {
+  background: transparent;
+  text-align: center;
+}
+
+.flight-toolbar {
+  ion-fab-button {
+    margin-inline: 0;
+  }
+}
+
 .rocket-container {
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  top: 15%;
+  left: 0;
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  height: 100%;
 
   .rocket-svg {
     width: 180px;

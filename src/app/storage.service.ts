@@ -38,7 +38,7 @@ export class StorageService {
     try {
       // @ts-ignore
       this.data[key] = value;
-      this._storage?.set(STORAGE_KEY, this.data);
+      this._storage!.set(STORAGE_KEY, this.data);
     }
     catch (err) {
       console.error(err);

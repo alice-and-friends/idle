@@ -8,6 +8,7 @@ import { StorageService} from "../storage.service";
 })
 export class Tab2Page {
   data: any;
+  presentingElement: any = null;
 
   constructor(private storage: StorageService) {
     this.loadData().then(() => this.startClock(storage));
@@ -55,6 +56,43 @@ export class Tab2Page {
       storage.set('resource', resource);
     }
     storage.set('resourcesLastUpdated', new Date());
+  }
+
+  dailyRewardAvailable() {
+    return this.timeUntilDailyRewardAvailable() <= 0;
+  }
+
+  timeUntilDailyRewardAvailable() {
+    const lastCollected = this.data.dailyReward.lastCollected;
+    if(lastCollected === null) {
+      return 0;
+    }
+
+    const then = new Date(lastCollected);
+    const now = new Date();
+    const timeElapsed = Math.round((now.getTime() - then.getTime()) / 1000);
+    const cooldown = 5; //20*60*60; // Reward can be collected every 20 hours
+    return cooldown - timeElapsed;
+  }
+
+  collectDailyReward() {
+    if(!this.dailyRewardAvailable()) {
+      console.warn('Daily reward is not ready');
+      return false;
+    }
+    let dailyReward = this.data.dailyReward;
+    dailyReward.lastCollected = new Date()
+    if(Number.isFinite(dailyReward.streak)) {
+      console.log(1, dailyReward);
+      dailyReward.streak++;
+    }
+    else{
+      console.log(2);
+      dailyReward.streak = 1;
+    }
+    console.log('attempting to set dailyReward as', dailyReward);
+    this.storage.set('dailyReward', dailyReward);
+    return true;
   }
 
 }

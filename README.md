@@ -1,6 +1,6 @@
-Space exploration idle game
+# Space exploration idle game
 
-You are a von Neumann probe
+## You are a von Neumann probe
 
 * Travel the galaxy and visit new worlds
 * Most worlds will be uninhabited but contain various materials which can be harvested
@@ -9,3 +9,22 @@ You can choose how to interact with them.
 * You have a small number of upgrade slots where you can install modules
 * Long-term goals include improving your blueprint and making new versions of yourself with more/better base stats and upgrade slots.
 * Consumable speed boosts
+
+## TODO:
+* Inventory
+  * General energy resource
+  * Engine boosters
+  * 3d printing materials
+    * Gold + Silicone for electronics
+    * ...
+* Add system/planet discovery
+  * System surveying
+  * Resource collection
+* Add ship modules
+  * Roamers/harvesters
+    * Upgrades for different planet/resource types
+  * Power core
+  * Surge Drive
+  * Boosters (requires consumable)
+  * 3d printer
+* Add daily rewards
