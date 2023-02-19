@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { StorageService} from "../storage.service";
+import {StarSystem} from "../models/star-system";
+import {StorageService} from "../storage.service";
 
 @Component({
   selector: 'app-tab2',
@@ -9,18 +10,24 @@ import { StorageService} from "../storage.service";
 export class Tab2Page {
   data: any;
   presentingElement: any = null;
+  system = new StarSystem()
 
   constructor(private storage: StorageService) {
     this.loadData().then(() => this.startClock(storage));
-  }
 
+    console.log(
+      this.system.description,
+      this.system.stars.map(a => a.description),
+      this.system.planets.map(a => a.description)
+    )
+  }
   async loadData() {
-    this.data = await this.storage.getData();
+    this.data = null//await this.storage.getData();
   }
 
   startClock(s: StorageService) {
     setInterval(() => {
-      this.tick(s)
+      //this.tick(s)
     }, 1000);
   }
 

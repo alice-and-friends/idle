@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {StorageService} from "../storage.service";
 import {ModalController} from "@ionic/angular";
 
 @Component({
@@ -35,13 +34,13 @@ export class Tab1Page {
     this.presentingElement = document.querySelector('.ion-page');
   }
 
-  constructor(private storage: StorageService, private modalCtrl: ModalController) {
-    this.loadData();
+  constructor(/*private storage: StorageService, */private modalCtrl: ModalController) {
+    //this.loadData();
     this.modalCtrl = modalCtrl;
   }
 
   async loadData() {
-    this.data = await this.storage.getData();
+    this.data = null //await this.storage.getData();
   }
 
   selectClass(selectedClass: object) {
@@ -55,7 +54,7 @@ export class Tab1Page {
     if (Math.sign(player.level) !== 1) {
       player.level = 1;
     }
-    this.storage.set('player', player);
+    //this.storage.set('player', player);
   }
 
 }

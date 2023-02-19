@@ -73,7 +73,7 @@
   }
 }
 
-.stars {
+.bg-stars {
   position: absolute;
   left: 0;
   top: 0px;
@@ -81,7 +81,7 @@
   height: 100%;
   overflow: hidden;
 }
-.star {
+.bg-star {
   position: absolute;
   z-index: -1;
   top: -1rem;
@@ -311,3 +311,4 @@
     transform: translate3d(0, 102vh, 0);
   }
 }
+

@@ -1,0 +1,15 @@
+<ion-item>
+  <ion-avatar slot="start" class="stellar-object-wrapper">
+    <div
+      class="stellar-object"
+      [ngClass]="stellarObject!.cssClass"
+      [ngStyle]="{'width.%': stellarObject!.size, 'height.%': stellarObject!.size}"
+    >
+      <span></span>
+    </div>
+  </ion-avatar>
+  <ion-label>
+    <h2>{{stellarObject!.description}}</h2>
+    <p>{{stellarObject!.cssClass}} {{stellarObject!.size}}</p>
+  </ion-label>
+</ion-item>

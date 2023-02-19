@@ -29,7 +29,6 @@
     <ion-card-header>
       <ion-card-title>Card Title</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
       <p>Here's a small text description for the card content. Nothing more, nothing less.</p>
       <ion-progress-bar [value]="0.4"></ion-progress-bar>
@@ -40,10 +39,31 @@
     <ion-fab-button size="small">
       <ion-icon name="layers-sharp"></ion-icon>
     </ion-fab-button>
+    <ion-fab-button id="open-system-info" size="small">
+      <ion-icon name="planet-sharp"></ion-icon>
+    </ion-fab-button>
     <ion-fab-button id="open-daily-rewards" size="small">
-      <ion-icon name="layers-sharp"></ion-icon>
+      <ion-icon name="diamond-sharp"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <ion-modal #systemInfo trigger="open-system-info" [presentingElement]="presentingElement">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>{{system.description}}</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="systemInfo.dismiss()">Close</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <app-stellar-object *ngFor="let star of system.stars.concat(system.planets)" [stellarObject]="star"></app-stellar-object>
+        </ion-list>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
 
   <ion-modal #dailyRewards trigger="open-daily-rewards" [presentingElement]="presentingElement">
     <ng-template>
@@ -109,29 +129,29 @@
       </svg>
     </div>
   </div>
-  <div class="stars">
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
-    <div class="star"></div>
+  <div class="bg-stars">
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
+    <div class="bg-star"></div>
   </div>
 </ion-content>

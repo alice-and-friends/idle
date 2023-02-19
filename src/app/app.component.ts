@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {StorageService} from "./storage.service";
-import {PlanetarySystem} from "./planetary-system";
 
 @Component({
   selector: 'app-root',
@@ -10,6 +9,5 @@ import {PlanetarySystem} from "./planetary-system";
 export class AppComponent {
   constructor(private storage: StorageService) {
     this.storage.init();
-    console.log(new PlanetarySystem())
   }
 }
