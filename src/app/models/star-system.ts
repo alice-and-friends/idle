@@ -191,7 +191,7 @@ export const starSystemTypes: StarSystemType[] = [
   {
     name: 'Pulsar',
     numberOfStars: 1,
-    weight: 1000,
+    weight: 1,
     unlocksAtLevel: 10,
     maxPlanets: 2,
     chanceOfPlanets: 0.1,
@@ -201,7 +201,7 @@ export const starSystemTypes: StarSystemType[] = [
   {
     name: 'Binary pulsar',
     numberOfStars: 2,
-    weight: 1000,
+    weight: 1,
     unlocksAtLevel: 10,
     maxPlanets: 2,
     chanceOfPlanets: 0.2,

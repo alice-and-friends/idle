@@ -196,6 +196,7 @@ export class Star extends StellarObject {
       description: starType.name,
       size: randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]),
       cssClass: ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]],
+      interactive: false,
     })
   }
 }

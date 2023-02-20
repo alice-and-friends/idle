@@ -251,6 +251,7 @@ export class Planet extends StellarObject {
       description: planetType.name,
       size: randomIntFromInterval(planetType.sizeRange[0], planetType.sizeRange[1]),
       cssClass: ['planet', planetType.cssVariants[~~(Math.random() * planetType.cssVariants.length)]],
+      interactive: true,
     })
     this.weight = planetType.weight;
     this.slot = planetType.slot;
