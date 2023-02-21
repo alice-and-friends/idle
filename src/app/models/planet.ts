@@ -20,11 +20,19 @@ export const planetTypes: PlanetType[] = [
    */
   {
     name: 'Protoplanet',
-    sizeRange: stellarObjectSizes.planet_dwarf,
+    sizeRange: stellarObjectSizes.planet_proto,
     zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-proto craters'],
+    cssVariants: ['planet-proto-1', 'planet-proto-2'],
+  },
+  {
+    name: 'Protoplanet',
+    sizeRange: stellarObjectSizes.planet_proto,
+    zones: [Zone.Inner, Zone.Habitable],
+    weight: 100,
+    unlocksAtLevel: 1,
+    cssVariants: ['planet-proto-3', 'planet-proto-4'],
   },
   {
     name: 'Asteroid',

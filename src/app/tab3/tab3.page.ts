@@ -3,6 +3,7 @@ import {StellarObject} from "../models/stellar-object";
 import {starTypes} from "../models/star";
 import {planetTypes} from "../models/planet";
 import {AsteroidBelt} from "../models/asteroid-belt";
+import {randomIntFromInterval} from "../util";
 
 @Component({
   selector: 'app-tab3',
@@ -22,22 +23,24 @@ export class Tab3Page {
         requiredTech: 1
       });
     }
+    /*
     starTypes.forEach(type => {
       type.cssVariants.forEach(variant => {
         this.stuff.push({
           description: type.name,
-          size: type.sizeRange[1],
+          size: randomIntFromInterval(type.sizeRange[0], type.sizeRange[1]),
           cssClass: ['star', variant],
           interactive: true,
           requiredTech: 1
         });
       })
     })
+    */
     planetTypes.forEach(type => {
       type.cssVariants.forEach(variant => {
         this.stuff.push({
           description: type.name,
-          size: type.sizeRange[1],
+          size: randomIntFromInterval(type.sizeRange[0], type.sizeRange[1]),
           cssClass: ['planet', variant],
           interactive: true,
           requiredTech: 1

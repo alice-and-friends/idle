@@ -17,10 +17,11 @@ export const stellarObjectSizes = {
 
   planet_giant: [55, 60],
   planet_standard: [45, 55],
-  planet_dwarf: [35, 45],
+  planet_dwarf: [40, 45],
+  planet_proto: [35, 40],
 
   asteroid_belt: [100, 100],
-  asteroid: [25, 25],
+  asteroid: [35, 35],
 
-  black_hole: [30, 100],
+  black_hole: [35, 100],
 }

@@ -429,8 +429,124 @@
   box-shadow: inset -3px -3px rgba(0, 0, 0, 0.1);
 }
 
-.planet-proto {
-  background-color: #76777A;
+.planet-proto-1 {
+  background-color: #73747a;
+  box-shadow: inset -2px -2px rgb(0 0 0 / 20%);
+
+  &:before {
+    position: absolute;
+    content: '';
+    background-color: #676769;
+    border-radius: 100%;
+    height: 20%;
+    left: 28%;
+    top: 25%;
+    width: 19%;
+  }
+  &:after {
+    position: absolute;
+    content: '';
+    background-color: #676769;
+    border-radius: 100%;
+    top: 53%;
+    left: 12%;
+    width: 35%;
+    height: 35%;
+  }
+}
+.planet-proto-2 {
+  $color: #46484b;
+  background-color: $color;
+  @include gradient(radial, (
+    darken($color, 5) 0%,
+    darken($color, 5) 25%,
+    $color 26%,
+    $color 100%,
+  ));
+  background-position: 2px -2px;
+  border-radius: 40% 50% 50% 60%;
+  box-shadow: inset -2px 2px rgb(0 0 0 / 18%);
+  transform: rotate(75deg);
+
+  &:before {
+    background-color: darken($color, 5);
+    border-radius: 100%;
+    height: 16%;
+    left: 58%;
+    top: 25%;
+    width: 15%;
+  }
+  &:after {
+    background-color: darken($color, 5);
+    border-radius: 100%;
+    top: 60%;
+    left: 22%;
+    width: 25%;
+    height: 25%;
+  }
+}
+.planet-lava-1 {
+  background-color: #460600;
+  &:before {
+    top: 10%;
+    left: 40%;
+    width: 40%;
+    height: 64%;
+    transform: rotate(-70deg);
+    border-radius: 100% 70% 100% 70%;
+    @include gradient(radial, (
+      #9f340f 0%,
+      #460600 50%,
+      rgba(159, 52, 15, 0.2) 100%,
+    ));
+  }
+  &:after {
+    background-color: #9f340f;
+    box-shadow: #9f340f 1px -4px 3px 3px;
+    border-radius: 100%;
+    height: 19%;
+    left: 30%;
+    top: 60%;
+    width: 19%;
+    opacity: 0.5;
+  }
+}
+.planet-proto-3 {
+  @include gradient(linear, (
+    #8d2f0e 0%,
+    #821004 20%,
+    #460600 92%,
+    #000000 100%,
+  ));
+  transform: rotate(10deg);
+}
+.planet-proto-4 {
+  @include gradient(radial, (
+    #8d2f0e 0%,
+    #821004 80%,
+    #460600 100%,
+  ));
+  &:before {
+    background-color: #480e0e;
+    box-shadow: #480e0e 1px -1px 3px 3px;
+    border-radius: 100%;
+    height: 19%;
+    left: 43%;
+    top: 68%;
+    width: 29%;
+    opacity: 0.5;
+  }
+  &:after {
+    background-color: #8d2f0e;
+    box-shadow: #8d2f0e 1px 0 3px 1px;
+    border-radius: 100%;
+    height: 20%;
+    left: 13%;
+    top: 18%;
+    width: 36%;
+    transform: rotate(-45deg);
+    opacity: 0.7;
+  }
 }
 .planet-asteroid-1 {
   background-color: #76777A;
@@ -1335,7 +1451,7 @@
     position: absolute;
     top: 55%;
     left: 5%;
-    width: 40%;
+    width: 35%;
     height: 34%;
     background-color: $color;
     @include gradient(radial, (
@@ -1373,8 +1489,8 @@
     &:before {
       position: absolute;
       top: 47%;
-      left: 60%;
-      width: 28%;
+      left: 53%;
+      width: 30%;
       height: 28%;
       background-color: $color;
       @include gradient(radial, (
@@ -1490,8 +1606,8 @@
     position: absolute;
     top: 44%;
     left: 55%;
-    width: 39%;
-    height: 43%;
+    width: 35%;
+    height: 35%;
     background-color: $color;
     @include gradient(radial, (
       darken($color, 5) 0%,
@@ -1618,10 +1734,10 @@
 
   &:before {
     position: absolute;
-    top: 48%;
+    top: 56%;
     left: 0;
-    width: 40%;
-    height: 46%;
+    width: 34%;
+    height: 36%;
     background-color: $color;
     @include gradient(radial, (
       darken($color, 3) 0%,
@@ -1637,9 +1753,9 @@
   &:after {
     position: absolute;
     top: 45%;
-    left: 46%;
-    width: 53%;
-    height: 45%;
+    left: 56%;
+    width: 38%;
+    height: 30%;
     background-color: $color;
     @include gradient(radial, (
       darken($color, 3) 0%,
@@ -1664,14 +1780,15 @@
       background-color: $color;
       @include gradient(radial, (
         darken($color, 3) 0%,
-        darken($color, 3) 24%,
-        $color 25%,
+        darken($color, 3) 28%,
+        $color 29%,
         $color 100%,
       ));
-      background-position: 15px 33px;
+      background-position: 14px 31px;
       border-radius: 50% 42% 45% 40%;
       box-shadow: rgba(31, 31, 31, 0.4) 0 0 1px 1px;
       content: '';
+      transform: rotate(-65deg);
     }
     &:after {
       position: absolute;
@@ -1699,8 +1816,8 @@
     position: absolute;
     top: 55%;
     left: 1%;
-    width: 39%;
-    height: 43%;
+    width: 33%;
+    height: 37%;
     background-color: $color;
     @include gradient(radial, (
       darken($color, 5) 0%,
@@ -1710,9 +1827,9 @@
     ));
     background-position: -2px 1px;
     border-radius: 56% 50% 50% 60%;
-    box-shadow: inset -2px -2px rgb(0 0 0 / 25%);
+    box-shadow: inset -2px -2px rgb(0 0 0 / 15%);
     content: '';
-    transform: rotate(-45deg);
+    transform: rotate(-5deg);
   }
   &:after {
     position: absolute;
