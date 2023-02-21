@@ -2,6 +2,7 @@ import {Star} from "./star";
 import {Zone, Planet} from "./planet";
 import {AsteroidBelt} from "./asteroid-belt";
 import {getWeightedRandom, randomIntFromInterval, shuffleArray} from "../util";
+import {StellarObject} from "./stellar-object";
 
 
 export const playerLevel = 10;
@@ -220,8 +221,8 @@ export const starSystemTypes: StarSystemType[] = [
 ];
 export class StarSystem {
   description: string = '';
-  stars: Star[] = [];
-  planets: (Planet|AsteroidBelt)[] = [];
+  stars: StellarObject[] = [];
+  planets: StellarObject[] = [];
   hasRarePlanet: boolean = false;
 
   constructor() {
@@ -277,7 +278,7 @@ export class StarSystem {
     for(let zone of zones) {
 
       // Generate planets for zone
-      let zoneObjects: (Planet|AsteroidBelt)[] = [];
+      let zoneObjects: StellarObject[] = [];
       for(let i = 1; i <= zone.planetCount; i++) {
 
         // If the system already has a rare planet,

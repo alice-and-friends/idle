@@ -237,23 +237,25 @@ export const planetTypes: PlanetType[] = [
   },
   */
 ];
-export class Planet extends StellarObject {
+export class Planet implements StellarObject {
+  description: string;
+  size: number;
+  cssClass: string[];
   weight: number;
   slot: string;
+  interactive = true;
+  requiredTech: number;
 
   constructor(zone: Zone, minWeight: number) {
-    const planetType = getWeightedRandom(
-      planetTypes.filter(type => {
-        return type.zones.includes(zone) && type.weight >= minWeight && type.unlocksAtLevel <= playerLevel
-      })
-    );
-    super({
-      description: planetType.name,
-      size: randomIntFromInterval(planetType.sizeRange[0], planetType.sizeRange[1]),
-      cssClass: ['planet', planetType.cssVariants[~~(Math.random() * planetType.cssVariants.length)]],
-      interactive: true,
-    })
+    const typeSet = planetTypes.filter(type => {
+      return type.zones.includes(zone) && type.weight >= minWeight && type.unlocksAtLevel <= playerLevel
+    });
+    const planetType = getWeightedRandom(typeSet);
+    this.description = planetType.name;
+    this.size = randomIntFromInterval(planetType.sizeRange[0], planetType.sizeRange[1]);
+    this.cssClass = ['planet', planetType.cssVariants[~~(Math.random() * planetType.cssVariants.length)]];
     this.weight = planetType.weight;
     this.slot = planetType.slot;
+    this.requiredTech = 1;
   }
 }

@@ -183,20 +183,23 @@ export const starTypes: StarType[] = [
     cssVariants: ['star-black-1'],
   },
 ];
-export class Star extends StellarObject {
+export class Star implements StellarObject {
+  description: string;
+  size: number;
+  cssClass: string[];
+  interactive = false;
+  requiredTech = null;
+
   constructor(allowedTypes: string[]) {
-    const options = starTypes.filter(type =>
+    const typeSet = starTypes.filter(type =>
       allowedTypes.includes(type.name) && type.unlocksAtLevel <= playerLevel
     );
-    if(options.length < 1) {
+    if(typeSet.length < 1) {
       console.error('No options found for', allowedTypes);
     }
-    const starType = getWeightedRandom(options);
-    super({
-      description: starType.name,
-      size: randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]),
-      cssClass: ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]],
-      interactive: false,
-    })
+    const starType = getWeightedRandom(typeSet);
+    this.description = starType.name;
+    this.size = randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]),
+    this.cssClass = ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]];
   }
 }

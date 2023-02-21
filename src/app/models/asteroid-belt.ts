@@ -1,12 +1,18 @@
 import {StellarObject} from "./stellar-object";
+import {randomIntFromInterval} from "../util";
 
-export class AsteroidBelt extends StellarObject {
+export class AsteroidBelt implements StellarObject {
+  description: string;
+  size: number;
+  cssClass: string[];
+  interactive: boolean;
+  requiredTech: number | null;
+
   constructor() {
-    super({
-      description: 'Asteroid belt',
-      size: 100,
-      cssClass: ['asteroid-belt-1', 'asteroid-belt-2', 'asteroid-belt-3', 'asteroid-belt-4'][~~(Math.random() * 4)],
-      interactive: true,
-    })
+    this.description = 'Asteroid belt';
+    this.size = 100;
+    this.cssClass = ['asteroid-belt-' + randomIntFromInterval(1, 6)];
+    this.interactive = true;
+    this.requiredTech = 1;
   }
 }

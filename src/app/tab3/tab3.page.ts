@@ -14,30 +14,35 @@ export class Tab3Page {
 
   constructor() {
     for(let i = 1; i<=6; i++) {
-      this.stuff.push(new StellarObject({
+      this.stuff.push({
         description: 'Asteroid belt',
         size: 100,
-        cssClass: ['asteroid-belt-'+i]
-      }))
+        cssClass: ['asteroid-belt-'+i],
+        interactive: true,
+        requiredTech: 1
+      });
     }
     starTypes.forEach(type => {
       type.cssVariants.forEach(variant => {
-        this.stuff.push(new StellarObject({
+        this.stuff.push({
           description: type.name,
           size: type.sizeRange[1],
-          cssClass: ['star', variant]
-        }))
+          cssClass: ['star', variant],
+          interactive: true,
+          requiredTech: 1
+        });
       })
     })
     planetTypes.forEach(type => {
       type.cssVariants.forEach(variant => {
-        this.stuff.push(new StellarObject({
+        this.stuff.push({
           description: type.name,
           size: type.sizeRange[1],
-          cssClass: ['planet', variant]
-        }))
+          cssClass: ['planet', variant],
+          interactive: true,
+          requiredTech: 1
+        });
       })
     })
-    this.stuff.push(new StellarObject(new AsteroidBelt()))
   }
 }

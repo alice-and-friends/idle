@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AsteroidBelt} from "../models/asteroid-belt";
-import {Star} from "../models/star";
-import {Planet} from "../models/planet";
+import {StellarObject} from "../models/stellar-object";
 
 @Component({
   selector: 'app-stellar-object',
@@ -9,7 +7,7 @@ import {Planet} from "../models/planet";
   styleUrls: ['./stellar-object.component.scss'],
 })
 export class StellarObjectComponent implements OnInit {
-  @Input() stellarObject!: Star | Planet | AsteroidBelt;
+  @Input() stellarObject!: StellarObject;
 
   ngOnInit() {}
 }
