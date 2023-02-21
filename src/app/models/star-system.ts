@@ -329,5 +329,12 @@ export class StarSystem {
       // Merge and continue with next zone
       this.planets = this.planets.concat(zoneObjects)
     }
+
+    // Remove any duplicate entries
+    this.planets = this.planets.filter((value, index, self) =>
+      index === self.findIndex((t) => (
+        t.cssClass === value.cssClass
+      ))
+    )
   }
 }

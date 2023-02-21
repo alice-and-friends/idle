@@ -5,7 +5,7 @@ import {StellarObject} from "./stellar-object";
 export const starSizes = {
   subdwarf: [80, 80],
   dwarf: [85, 85],
-  white_dwarf: [75, 75],
+  white_dwarf: [70, 70],
   giant: [90, 90],
   supergiant: [95, 95],
   hypergiant: [100, 100],

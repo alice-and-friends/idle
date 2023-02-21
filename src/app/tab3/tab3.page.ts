@@ -13,6 +13,13 @@ export class Tab3Page {
   stuff: StellarObject[] = []
 
   constructor() {
+    for(let i = 1; i<=6; i++) {
+      this.stuff.push(new StellarObject({
+        description: 'Asteroid belt',
+        size: 100,
+        cssClass: ['asteroid-belt-'+i]
+      }))
+    }
     starTypes.forEach(type => {
       type.cssVariants.forEach(variant => {
         this.stuff.push(new StellarObject({
