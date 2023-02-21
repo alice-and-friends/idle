@@ -746,6 +746,24 @@
     $color1 85%,
   ));
 }
+.planet-gas-11 {
+  $blue1: #5C658B;
+  $blue2: #6288CA;
+  $yellow: #E4DED8;
+  $cream: #DECDD4;
+  @include gradient(linear, (
+    $blue1 0%,
+    $blue1 20%,
+    $yellow 30%,
+    $yellow 40%,
+    $blue2 50%,
+    $blue2 60%,
+    $cream 70%,
+    $cream 80%,
+    $blue1 90%,
+    $blue1 100%,
+  ));
+}
 .planet-ice-1 {
   background-color: #5E8FB5;
 }
@@ -924,6 +942,14 @@
       top: 9%;
     }
   }
+}
+.planet-lava-5 {
+  background-color: #5d181f;
+  @include gradient(radial, (
+    #5d181f 0%,
+    #272523 100%
+  ));
+  background-position: -2px -2px;
 }
 
 .planet-continental-1 {

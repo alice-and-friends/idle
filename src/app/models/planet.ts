@@ -48,7 +48,7 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10'],
+    cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10', 'planet-gas-11'],
   },
   {
     name: 'Gas giant',
@@ -56,7 +56,15 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 50,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10'],
+    cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10', 'planet-gas-11'],
+  },
+  {
+    name: 'Gas dwarf',
+    sizeRange: stellarObjectSizes.planet_dwarf,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
+    weight: 50,
+    unlocksAtLevel: 1,
+    cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10', 'planet-gas-11'],
   },
   {
     name: 'Ice planet',
@@ -96,7 +104,7 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-lava-1', 'planet-lava-2', 'planet-lava-3', 'planet-lava-4'],
+    cssVariants: ['planet-lava-1', 'planet-lava-2', 'planet-lava-3', 'planet-lava-4', 'planet-lava-5'],
   },
   {
     name: 'Ocean planet',
