@@ -233,7 +233,7 @@ export class StarSystem {
 
     // Rogue planet special case
     if (starSystemType.maxPlanets === 1) {
-      this.planets = [new Planet(Zone.Cold, 50)];
+      this.planets = [new Planet(Zone.Outer, 50)];
       return this; // No stars, no asteroid belts, just the one planet.
     }
 
@@ -258,18 +258,18 @@ export class StarSystem {
     const systemHasPlanets = Math.random() < starSystemType.chanceOfPlanets;
     const numberOfPlanets = systemHasPlanets ? randomIntFromInterval(1, starSystemType.maxPlanets) : 0;
     const zones = [
-      {id: Zone.Hot, planetCount: 0, maxPlanets: 4, beltCount: 0, maxBelts: 1},
+      {id: Zone.Inner, planetCount: 0, maxPlanets: 4, beltCount: 0, maxBelts: 1},
       {id: Zone.Habitable, planetCount: 0, maxPlanets: 4},
-      {id: Zone.Cold, planetCount: 0, beltCount: 0, maxBelts: 1}
+      {id: Zone.Outer, planetCount: 0, beltCount: 0, maxBelts: 1}
     ]
     if (systemHasPlanets) {
       for(let i = 1; i <= numberOfPlanets; i++) {
         const randomZone = zones[randomIntFromInterval(0, 2)]
-        if (randomZone.id !== Zone.Cold && randomZone.planetCount < randomZone.maxPlanets!) {
+        if (randomZone.id !== Zone.Outer && randomZone.planetCount < randomZone.maxPlanets!) {
           randomZone.planetCount++;
         }
         else {
-          zones.find(z => z.id === Zone.Cold)!.planetCount++;
+          zones.find(z => z.id === Zone.Outer)!.planetCount++;
         }
       }
     }
@@ -311,10 +311,10 @@ export class StarSystem {
       const beltCount = this.planets.concat(zoneObjects).filter(o => o instanceof AsteroidBelt).length;
       if (zoneCanHaveMoreBelts(beltCount)) {
         const randomChance = Math.random() < 0.5;
-        if(zone.id === Zone.Hot && randomChance) {
+        if(zone.id === Zone.Inner && randomChance) {
           zoneObjects.push(new AsteroidBelt())
         }
-        else if(zone.id === Zone.Cold && (randomChance || beltCount === 0)) {
+        else if(zone.id === Zone.Outer && (randomChance || beltCount === 0)) {
           zoneObjects.push(new AsteroidBelt())
         }
       }

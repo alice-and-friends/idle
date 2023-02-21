@@ -1,4 +1,4 @@
-import {StellarObject} from "./stellar-object";
+import {StellarObject, stellarObjectSizes} from "./stellar-object";
 import {randomIntFromInterval} from "../util";
 
 export class AsteroidBelt implements StellarObject {
@@ -10,7 +10,7 @@ export class AsteroidBelt implements StellarObject {
 
   constructor() {
     this.description = 'Asteroid belt';
-    this.size = 100;
+    this.size = stellarObjectSizes.asteroid_belt[1];
     this.cssClass = ['asteroid-belt-' + randomIntFromInterval(1, 6)];
     this.interactive = true;
     this.requiredTech = 1;

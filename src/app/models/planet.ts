@@ -1,15 +1,9 @@
 import {getWeightedRandom, randomIntFromInterval} from "../util";
 import {playerLevel} from "./star-system";
-import {StellarObject} from "./stellar-object";
+import {StellarObject, stellarObjectSizes} from "./stellar-object";
 
 export enum Zone {
-  Hot, Habitable, Cold
-}
-export const planetSizes = {
-  giant: [65, 70],
-  standard: [50, 60],
-  dwarf: [35, 45],
-  asteroid: [30, 30],
+  Inner, Habitable, Outer
 }
 export type PlanetType = {
   name: string;
@@ -26,55 +20,55 @@ export const planetTypes: PlanetType[] = [
    */
   {
     name: 'Protoplanet',
-    sizeRange: planetSizes.dwarf,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_dwarf,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-proto craters'],
   },
   {
     name: 'Asteroid',
-    sizeRange: planetSizes.asteroid,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.asteroid,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-asteroid-1', 'planet-asteroid-2', 'planet-asteroid-3'],
   },
   {
     name: 'Gas planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10'],
   },
   {
     name: 'Gas giant',
-    sizeRange: planetSizes.giant,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_giant,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 50,
     unlocksAtLevel: 1,
     cssVariants: ['planet-gas-1', 'planet-gas-2', 'planet-gas-3', 'planet-gas-4', 'planet-gas-5', 'planet-gas-6', 'planet-gas-7', 'planet-gas-8', 'planet-gas-9', 'planet-gas-10'],
   },
   {
     name: 'Ice planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-ice-1', 'planet-ice-2', 'planet-ice-3', 'planet-ice-4'],
   },
   {
     name: 'Ice giant',
-    sizeRange: planetSizes.giant,
-    zones: [Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_giant,
+    zones: [Zone.Outer],
     weight: 50,
     unlocksAtLevel: 1,
     cssVariants: ['planet-ice-1', 'planet-ice-2', 'planet-ice-3', 'planet-ice-4'],
   },
   {
     name: 'Forest planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -82,7 +76,7 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Swamp planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -90,15 +84,15 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Lava planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-lava-1', 'planet-lava-2', 'planet-lava-3', 'planet-lava-4'],
   },
   {
     name: 'Ocean planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -106,7 +100,7 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Continental planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -114,7 +108,7 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Tropical planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -122,7 +116,7 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Silicate planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
@@ -130,16 +124,16 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Rocky planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-rocky-1', 'planet-rocky-2', 'planet-rocky-3', 'planet-rocky-4'],
   },
   {
     name: 'Desert planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
     cssVariants: ['planet-desert'],
@@ -150,16 +144,16 @@ export const planetTypes: PlanetType[] = [
    */
   {
     name: 'Iron planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 1,
     unlocksAtLevel: 1,
     cssVariants: ['planet-iron'],
   },
   {
     name: 'Chthonian planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner],
     weight: 1,
     unlocksAtLevel: 1,
     cssVariants: ['planet-chthonian-1', 'planet-chthonian-2'],
@@ -167,7 +161,7 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Mycelium planet',
-    sizeRange: planetSizes.standard,
+    sizeRange: stellarObjectSizes.planet_standard,
     zones: [Zone.Habitable],
     weight: 1,
     unlocksAtLevel: 1,
@@ -175,24 +169,24 @@ export const planetTypes: PlanetType[] = [
   },
   {
     name: 'Crystal planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 1,
     unlocksAtLevel: 1,
     cssVariants: ['planet-crystal-1', 'planet-crystal-2', 'planet-crystal-3'],
   },
   {
     name: 'Salt planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 1,
     unlocksAtLevel: 1,
     cssVariants: ['planet-salt'],
   },
   {
     name: 'Ammonia planet',
-    sizeRange: planetSizes.standard,
-    zones: [Zone.Hot, Zone.Habitable, Zone.Cold],
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 1,
     unlocksAtLevel: 1,
     cssVariants: ['planet-ammonia'],
