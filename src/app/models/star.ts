@@ -169,7 +169,21 @@ export const starTypes: StarType[] = [
     weight: 1,
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_dwarf,
-    cssVariants: ['star-black-1'],
+    cssVariants: ['star-black'],
+  },
+  {
+    name: 'Frozen star',
+    weight: 1,
+    unlocksAtLevel: 10,
+    sizeRange: stellarObjectSizes.star_dwarf,
+    cssVariants: ['star-frozen'],
+  },
+  {
+    name: 'Iron star',
+    weight: 1,
+    unlocksAtLevel: 10,
+    sizeRange: stellarObjectSizes.star_dwarf,
+    cssVariants: ['star-iron'],
   },
 ];
 export class Star implements StellarObject {

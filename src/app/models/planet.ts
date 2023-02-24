@@ -144,7 +144,7 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 100,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-rocky-1', 'planet-rocky-2', 'planet-rocky-3', 'planet-rocky-4'],
+    cssVariants: ['planet-rocky-1', 'planet-rocky-2', 'planet-rocky-3', 'planet-rocky-4', 'planet-rocky-5'],
   },
   {
     name: 'Desert planet',
@@ -152,7 +152,7 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable],
     weight: 100,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-desert'],
+    cssVariants: ['planet-desert-1', 'planet-desert-2'],
   },
 
   /**
@@ -205,7 +205,31 @@ export const planetTypes: PlanetType[] = [
     zones: [Zone.Inner, Zone.Habitable, Zone.Outer],
     weight: 1,
     unlocksAtLevel: 1,
-    cssVariants: ['planet-ammonia'],
+    cssVariants: ['planet-ammonia-1', 'planet-ammonia-2', 'planet-ammonia-3'],
+  },
+  {
+    name: 'Double ringed planet',
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Habitable, Zone.Outer],
+    weight: 1,
+    unlocksAtLevel: 1,
+    cssVariants: ['planet-double-ringed'],
+  },
+  {
+    name: 'Tidally locked planet',
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Inner],
+    weight: 1,
+    unlocksAtLevel: 1,
+    cssVariants: ['planet-tidally-locked-1'],
+  },
+  {
+    name: 'Tidally locked planet',
+    sizeRange: stellarObjectSizes.planet_standard,
+    zones: [Zone.Habitable],
+    weight: 1,
+    unlocksAtLevel: 1,
+    cssVariants: ['planet-tidally-locked-2', 'planet-tidally-locked-3'],
   },
   /*
   {
