@@ -1,5 +1,5 @@
 import {Star} from "./star";
-import {Zone, Planet} from "./planet";
+import {Zone, Planetoid} from "./planetoid";
 import {AsteroidBelt} from "./asteroid-belt";
 import {getWeightedRandom, randomIntFromInterval, shuffleArray} from "../util";
 import {StellarObject} from "./stellar-object";
@@ -233,7 +233,7 @@ export class StarSystem {
 
     // Rogue planet special case
     if (starSystemType.maxPlanets === 1) {
-      this.planets = [new Planet(Zone.Outer, 50)];
+      this.planets = [new Planetoid(Zone.Outer, 50)];
       return this; // No stars, no asteroid belts, just the one planet.
     }
 
@@ -286,7 +286,7 @@ export class StarSystem {
         const minWeight = this.hasRarePlanet ? 20 : 0;
 
         // Generate a planet
-        const newPlanet = new Planet(zone.id, minWeight)
+        const newPlanet = new Planetoid(zone.id, minWeight)
 
         // Make sure the planet is not a duplicate
         const list = (this.planets.concat(zoneObjects)).map(p => p.cssClass.toString())
@@ -324,7 +324,7 @@ export class StarSystem {
 
       // Respect slotting
       zoneObjects = zoneObjects.sort((a, b) => {
-        return a instanceof Planet && a.slot === 'first' ? -1 : 1;
+        return a instanceof Planetoid && a.slot === 'first' ? -1 : 1;
       })
 
       // Merge and continue with next zone

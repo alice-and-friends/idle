@@ -1,7 +1,7 @@
-import { Planet, Zone } from './planet';
+import { Planetoid, Zone } from './planetoid';
 
 describe('Planet', () => {
   it('should create an instance', () => {
-    expect(new Planet(Zone.Habitable, 1)).toBeTruthy();
+    expect(new Planetoid(Zone.Habitable, 1)).toBeTruthy();
   });
 });

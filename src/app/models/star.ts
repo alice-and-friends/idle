@@ -1,6 +1,6 @@
 import {getWeightedRandom, randomIntFromInterval} from "../util";
 import {playerLevel} from "./star-system";
-import {StellarObject, stellarObjectSizes} from "./stellar-object";
+import {LootModel, lootModels, StellarObject, stellarObjectSizes} from "./stellar-object";
 
 export const starColors = {
   blue: ['star-blue-1', 'star-blue-2', 'star-blue-3', 'star-blue-4', 'star-blue-5', 'star-blue-6'],
@@ -15,6 +15,7 @@ export type StarType = {
   unlocksAtLevel: number;
   sizeRange: number[];
   cssVariants: string[];
+  lootModel: LootModel;
 }
 export const starTypes: StarType[] = [
   {
@@ -23,6 +24,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_giant,
     cssVariants: starColors.blue,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Blue dwarf',
@@ -30,13 +32,15 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_giant,
     cssVariants: starColors.blue,
+    lootModel: lootModels.starRare,
   },
   {
     name: 'Blue giant',
-    weight: 1,
+    weight: 2,
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_giant,
     cssVariants: starColors.blue,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Blue supergiant',
@@ -44,6 +48,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_supergiant,
     cssVariants: starColors.blue,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Blue hypergiant',
@@ -51,6 +56,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_hypergiant,
     cssVariants: starColors.blue,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'White dwarf',
@@ -58,6 +64,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 2,
     sizeRange: stellarObjectSizes.star_white_dwarf,
     cssVariants: ['star-white-1'],
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Yellow subdwarf',
@@ -65,6 +72,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 3,
     sizeRange: stellarObjectSizes.star_subdwarf,
     cssVariants: starColors.yellow,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Yellow dwarf',
@@ -72,6 +80,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: starColors.yellow,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Yellow giant',
@@ -79,6 +88,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_giant,
     cssVariants: starColors.yellow,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Yellow supergiant',
@@ -86,6 +96,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_supergiant,
     cssVariants: starColors.yellow,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Yellow hypergiant',
@@ -93,6 +104,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_hypergiant,
     cssVariants: starColors.yellow,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Red subdwarf',
@@ -100,6 +112,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 3,
     sizeRange: stellarObjectSizes.star_subdwarf,
     cssVariants: starColors.red,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Red dwarf',
@@ -107,6 +120,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: starColors.red,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Red giant',
@@ -114,6 +128,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_giant,
     cssVariants: starColors.red,
+    lootModel: lootModels.starCommon,
   },
   {
     name: 'Red supergiant',
@@ -121,6 +136,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_supergiant,
     cssVariants: starColors.red,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Red hypergiant',
@@ -128,6 +144,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_hypergiant,
     cssVariants: starColors.red,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Brown subdwarf',
@@ -135,6 +152,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 3,
     sizeRange: stellarObjectSizes.star_subdwarf,
     cssVariants: starColors.brown,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Brown dwarf',
@@ -142,6 +160,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 1,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: starColors.brown,
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Pulsar',
@@ -149,6 +168,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_pulsar,
     cssVariants: ['star-pulsar-1', 'star-pulsar-2', 'star-pulsar-3', 'star-pulsar-4'],
+    lootModel: lootModels.starRare,
   },
   {
     name: 'Protostar',
@@ -156,6 +176,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_protostar,
     cssVariants: ['star-protostar-1', 'star-protostar-2'],
+    lootModel: lootModels.starRare,
   },
   {
     name: 'Black hole',
@@ -163,6 +184,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.black_hole,
     cssVariants: ['black-hole-1', 'black-hole-2'],
+    lootModel: lootModels.starSemiRare,
   },
   {
     name: 'Black dwarf',
@@ -170,6 +192,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: ['star-black'],
+    lootModel: lootModels.starRare,
   },
   {
     name: 'Frozen star',
@@ -177,6 +200,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: ['star-frozen'],
+    lootModel: lootModels.starRare,
   },
   {
     name: 'Iron star',
@@ -184,6 +208,7 @@ export const starTypes: StarType[] = [
     unlocksAtLevel: 10,
     sizeRange: stellarObjectSizes.star_dwarf,
     cssVariants: ['star-iron'],
+    lootModel: lootModels.starRare,
   },
 ];
 export class Star implements StellarObject {
@@ -192,6 +217,7 @@ export class Star implements StellarObject {
   cssClass: string[];
   interactive = false;
   requiredTech = null;
+  lootModel = lootModels.starCommon;
 
   constructor(allowedTypes: string[]) {
     const typeSet = starTypes.filter(type =>
@@ -202,7 +228,7 @@ export class Star implements StellarObject {
     }
     const starType = getWeightedRandom(typeSet);
     this.description = starType.name;
-    this.size = randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]),
+    this.size = randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]);
     this.cssClass = ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]];
   }
 }

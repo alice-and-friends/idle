@@ -488,12 +488,12 @@
   background-size: 125% 125%;
   background-position: -8px -1px;
   box-shadow: 0 0 6px 0 #EF4902;
-  
+
   &:before {
-    background-color: #dc5406;
+    background-color: #CA4201;
     @include gradient(radial, (
-      #dc5406 0%,
-      #dc5406 50%,
+      #CA4201 0%,
+      #CA4201 50%,
       rgba(255, 255, 255, 0) 100%,
     ));
     border-radius: 100%;
@@ -510,10 +510,10 @@
       rgba(255, 255, 255, 0) 100%,
     ));
     border-radius: 100%;
-    height: 20%;
+    height: 12%;
     left: 32%;
     top: 64%;
-    width: 20%;
+    width: 12%;
   }
   span {
     &:before {
