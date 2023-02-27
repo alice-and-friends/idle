@@ -1,6 +1,7 @@
 import {getWeightedRandom, randomIntFromInterval} from "../util";
 import {playerLevel} from "./star-system";
-import {LootModel, lootModels, StellarObject, stellarObjectSizes} from "./stellar-object";
+import {LootModel, lootModels, IStellarObject, stellarObjectSizes} from "./i-stellar-object";
+import {StellarObject} from "./stellar-object";
 
 export const starColors = {
   blue: ['star-blue-1', 'star-blue-2', 'star-blue-3', 'star-blue-4', 'star-blue-5', 'star-blue-6'],
@@ -211,14 +212,7 @@ export const starTypes: StarType[] = [
     lootModel: lootModels.starRare,
   },
 ];
-export class Star implements StellarObject {
-  description: string;
-  size: number;
-  cssClass: string[];
-  interactive = false;
-  requiredTech = null;
-  lootModel = lootModels.starCommon;
-
+export class Star extends StellarObject {
   constructor(allowedTypes: string[]) {
     const typeSet = starTypes.filter(type =>
       allowedTypes.includes(type.name) && type.unlocksAtLevel <= playerLevel
@@ -227,8 +221,13 @@ export class Star implements StellarObject {
       console.error('No options found for', allowedTypes);
     }
     const starType = getWeightedRandom(typeSet);
-    this.description = starType.name;
-    this.size = randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]);
-    this.cssClass = ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]];
+    super(
+      starType.name,
+      randomIntFromInterval(starType.sizeRange[0], starType.sizeRange[1]),
+      ['star', starType.cssVariants[~~(Math.random() * starType.cssVariants.length)]],
+      true,
+      1,
+      starType.lootModel,
+    )
   }
 }

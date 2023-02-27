@@ -1,6 +1,7 @@
 import {getWeightedRandom, randomIntFromInterval} from "../util";
 import {playerLevel} from "./star-system";
-import {generateLoot, Loot, LootModel, lootModels, StellarObject, stellarObjectSizes} from "./stellar-object";
+import {LootModel, lootModels, IStellarObject, stellarObjectSizes} from "./i-stellar-object";
+import {StellarObject} from "./stellar-object";
 
 export enum Zone {
   Inner, Habitable, Outer
@@ -298,31 +299,24 @@ export const planetTypes: PlanetType[] = [
   },
   */
 ];
-export class Planetoid implements StellarObject {
-  description: string;
-  size: number;
-  cssClass: string[];
+export class Planetoid extends StellarObject {
   weight: number;
   slot: string;
-  interactive = true;
-  requiredTech: number;
-  // lootModel: LootModel;
-  loot: Loot;
-  lootStr: string;
 
   constructor(zone: Zone, minWeight: number) {
     const typeSet = planetTypes.filter(type => {
       return type.zones.includes(zone) && type.weight >= minWeight && type.unlocksAtLevel <= playerLevel
     });
     const planetType = getWeightedRandom(typeSet);
-    this.description = planetType.name;
-    this.size = randomIntFromInterval(planetType.sizeRange[0], planetType.sizeRange[1]);
-    this.cssClass = ['planet', planetType.cssVariants[~~(Math.random() * planetType.cssVariants.length)]];
+    super(
+      planetType.name,
+      randomIntFromInterval(planetType.sizeRange[0], planetType.sizeRange[1]),
+      ['planet', planetType.cssVariants[~~(Math.random() * planetType.cssVariants.length)]],
+      false,
+      1,
+      planetType.lootModel,
+    )
     this.weight = planetType.weight;
     this.slot = planetType.slot;
-    this.requiredTech = 1;
-    // this.lootModel = planetType.lootModel;
-    this.loot = generateLoot(planetType.lootModel);
-    this.lootStr = JSON.stringify(this.loot);
   }
 }

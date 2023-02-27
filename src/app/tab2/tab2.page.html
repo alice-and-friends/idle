@@ -60,7 +60,8 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <app-stellar-object *ngFor="let star of system.stars.concat(system.planets)" [stellarObject]="star"></app-stellar-object>
+          <app-stellar-object *ngFor="let star of system.stars" [stellarObject]="star"></app-stellar-object>
+          <app-stellar-object *ngFor="let planet of system.planets" [stellarObject]="planet"></app-stellar-object>
         </ion-list>
       </ion-content>
     </ng-template>

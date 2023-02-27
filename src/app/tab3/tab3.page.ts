@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {StellarObject} from "../models/stellar-object";
+import {IStellarObject} from "../models/i-stellar-object";
 import {starTypes} from "../models/star";
 import {planetTypes} from "../models/planetoid";
 import {randomIntFromInterval} from "../util";
@@ -11,7 +11,7 @@ import {asteroidBeltTypes} from "../models/asteroid-belt";
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  stuff: StellarObject[] = []
+  stuff: IStellarObject[] = []
 
   constructor() {
     /*
@@ -22,7 +22,8 @@ export class Tab3Page {
           size: randomIntFromInterval(type.sizeRange[0], type.sizeRange[1]),
           cssClass: ['star', variant],
           interactive: true,
-          requiredTech: 1
+          requiredTech: 1,
+          loot: {},
         });
       })
     })
@@ -36,6 +37,7 @@ export class Tab3Page {
           interactive: true,
           requiredTech: 1,
           lootModel: type.lootModel,
+          loot: {},
         });
       })
     })
@@ -48,6 +50,7 @@ export class Tab3Page {
           interactive: true,
           requiredTech: 1,
           lootModel: type.lootModel,
+          loot: {},
         });
       })
     })
@@ -60,6 +63,7 @@ export class Tab3Page {
         interactive: true,
         requiredTech: 1,
         lootModel: lootModels.asteroidBelt,
+          loot: {},
       });
     }
     */

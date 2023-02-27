@@ -1,6 +1,8 @@
-import {getWeightedRandom} from "../util";
-import {LootModel, lootModels, StellarObject, stellarObjectSizes} from "./stellar-object";
+import {getWeightedRandom, randomIntFromInterval} from "../util";
+import {LootModel, lootModels, IStellarObject, stellarObjectSizes, Loot} from "./i-stellar-object";
 import {playerLevel} from "./star-system";
+import {StellarObject} from "./stellar-object";
+import {ResourceType} from "./resource";
 
 export type AsteroidBeltType = {
   unlocksAtLevel: number,
@@ -22,7 +24,22 @@ export const asteroidBeltTypes = [
     lootModel: lootModels.asteroidBeltSmall,
   },
 ]
-export class AsteroidBelt implements StellarObject {
+export class AsteroidBelt extends StellarObject /*implements IStellarObject*/ {
+  constructor() {
+    const typeSet = asteroidBeltTypes.filter(type => {
+      return type.unlocksAtLevel <= playerLevel
+    });
+    const type = getWeightedRandom(typeSet);
+    super(
+      'Asteroid belt',
+      stellarObjectSizes.asteroid_belt[1],
+      ['planet', type.cssVariants[~~(Math.random() * type.cssVariants.length)]],
+      true,
+      1,
+      type.lootModel,
+    );
+  }
+  /*
   description: string;
   size: number;
   cssClass: string[];
@@ -42,4 +59,5 @@ export class AsteroidBelt implements StellarObject {
     this.requiredTech = 1;
     this.lootModel = type.lootModel;
   }
+   */
 }

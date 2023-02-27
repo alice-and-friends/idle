@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StellarObject} from "../models/stellar-object";
+import {IStellarObject} from "../models/i-stellar-object";
 
 @Component({
   selector: 'app-stellar-object',
@@ -7,7 +7,7 @@ import {StellarObject} from "../models/stellar-object";
   styleUrls: ['./stellar-object.component.scss'],
 })
 export class StellarObjectComponent implements OnInit {
-  @Input() stellarObject!: StellarObject;
+  @Input() stellarObject!: IStellarObject;
 
   ngOnInit() {}
 }
